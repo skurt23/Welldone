@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Welldone. Artículos más recientes. Página {{ articles_list.number }}{% endblock%}
+{% block description %}Artículos más recientes. Página {{ articles_list.number }}{% endblock%}
+{% block meta %}{% spaceless %}
+    {% include 'includes/rel_next_prev.html' with object_list=articles_list %}
+{% endspaceless %}{% endblock%}
+
+{% block content %}
+    <section id="content" class="bottom-50 root-sec grey lighten-5 blogpage-posts-wrap">
+        <div class="container">
+            {% include 'articles/includes/articles_loop.html' %}
+        </div>
+
+        {% include 'includes/pagination.html' with object_list=articles_list %}
+    </section>
+
+{% endblock %}

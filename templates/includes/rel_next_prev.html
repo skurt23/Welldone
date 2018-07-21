@@ -1,0 +1,12 @@
+{%  load url_tags %}
+
+{% if object_list.has_other_pages %}
+    {% with 'http://'|add:request.META.HTTP_HOST|add:request.path as current_url %}
+        {% if object_list.has_next %}
+            <link href="{{ current_url }}?{% url_replace page=object_list.next_page_number %}" rel="next" />
+        {% endif %}
+        {% if object_list.has_previous %}
+            <link href="{{ current_url }}?{% url_replace page=object_list.previous_page_number %}" rel="prev" />
+        {% endif %}
+    {% endwith %}
+{% endif %}

@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col s12">
+      <div class="nav-inner">
+        <nav class="primary-nav">
+          <div class="clearfix nav-wrapper">
+            <a href="" class="left brand-logo"><img src="../assets/images/logo.png" alt="">
+            </a>
+            <ul class="right static-menu">
+              <li *ngIf="logged">
+                <a materialize="sideNav" [materializeParams]="[{edge:'left'}]"data-activates="user-menu" class="button-collapse show-on-large" style="padding-top: 5px"><i class="material-icons" style="color: grey">menu</i></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ul id="user-menu" class="side-nav">
+  <li><a class="subheader">{{ username }}</a></li>
+  <li><div class="divider"></div></li>
+  <li class="waves-effect" style="width: 100%" *ngFor="let route of routes"
+       [routerLinkActive]="['active']"
+       [routerLinkActiveOptions]="{exact: true}">
+    <a [routerLink]="['/' + route.path]">{{route.data}}</a>
+  </li>
+  <li><div class="divider"></div></li>
+  <li class="out"><a (click)="logout()"><i class="material-icons">exit_to_app</i>Salir</a></li>
+</ul>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+

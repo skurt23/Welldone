@@ -1,0 +1,24 @@
+{% load static %}
+{% load i18n %}
+{% load article_tags %}
+{% load follow_tags %}
+
+<div class="owner_info">
+    <div class="chip {% if user.is_authenticated and user != owner %}with_action{% endif %}">
+        <a href="{% url 'articles_by_user' owner %}">
+            <img src="{% static "images/person.jpg" %}" alt="Contact Person">
+            <strong>{{ owner.username }}</strong>, <time class="then" datetime="{{ item_date|date:"c" }}">{{ item_date.publicated_at }}</time>
+        </a>
+        {% if user.is_authenticated and user != owner %}
+            {% if user|follows:owner %}
+                <a class="js-follow action_remove_fav" data-owner="{{ owner.pk }}" data-follow-url="{% url 'follow_user' %}" data-unfollow-url="{% url 'unfollow_user' %}">
+                    <i class="material-icons">check</i>
+                </a>
+            {% else %}
+                <a class="js-follow action_add_fav" data-owner="{{ owner.pk }}" data-follow-url="{% url 'follow_user' %}" data-unfollow-url="{% url 'unfollow_user' %}">
+                    <i class="material-icons">add</i>
+                </a>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>

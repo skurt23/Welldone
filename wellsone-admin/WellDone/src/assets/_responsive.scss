@@ -1,0 +1,137 @@
+/*
+
+Índice :
+
+1. screenwidth greater than 1024px (Medium Screen/Large Tablets)
+2. screenwidth less than 1024px (Medium Screen/Large Tablets)
+3. screenwidth less than 960px (Mobile wide/Smaller Tablets)
+4. screenwidth less than 768px (Mobile wide/Smaller Tablets)
+5. screenwidth greater than 480px (Medium Screen Mobile)
+
+*/
+
+
+
+/* Screens Resolution : 1024px
+-------------------------------------------------------------------------- */
+@media only screen and (max-width: 1365px) {
+
+}
+
+
+/* Screens Resolution : 1024px
+-------------------------------------------------------------------------- */
+@media only screen and (max-width: 1024px) {
+
+
+}
+
+@media only screen and (max-width: 992px) {
+
+    .title {
+        font-size: 42px;
+    }
+
+    .section-head {
+        margin-bottom: 40px;
+    }
+
+    .primary-nav .brand-logo {
+        left: 75px;
+        max-width: 300px;
+        position: absolute;
+        display: none;
+    }
+
+    nav a.button-collapse {
+        color: #727272;
+        float: left;
+        left: 0;
+        position: absolute;
+        top: 8px;
+        z-index: 99;
+    }
+
+    nav ul li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+
+    .contact-form .submit-wrap {
+        margin-top: 40px;
+    }
+
+    .padd-tb-120 {
+        padding-bottom: 80px;
+        padding-top: 80px;
+    }
+
+}
+
+@media only screen and (max-width: 991px) {
+
+}
+
+@media only screen and (max-width: 767px) {
+
+    .title {
+        font-size: 36px;
+        line-height: 1.1;
+    }
+
+    .modal .title {
+        font-size: 18px;
+        line-height: 1.2;
+    }
+    .section-title {
+        margin-bottom: 20px;
+    }
+
+    .cform-wrapper {
+        border-radius: 0;
+    }
+
+    .social-icons {
+        display: block;
+        float: none;
+        margin: 15px auto;
+        text-align: center;
+        width: 100%;
+    }
+    .copyright {
+        display: block;
+        float: none;
+        padding: 5px 0;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+
+    .title {
+        font-size: 32px;
+    }
+
+    .static-menu form {
+        width: 170px;
+    }
+
+
+    #message-success {
+        float: left;
+        margin: 24px auto;
+        position: relative;
+        width: 100%;
+    }
+
+    #message-success p{
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+@media only screen and (max-width: 359px) {
+
+}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{#{% block jumbotron %}#}
+{#    {% include 'blog/include/jumbotron.html' %}#}
+{#{% endblock %}#}
+
+{% block content %}
+    <section id="content" class="bottom-50">
+        <div class="container">
+            <h1 class="title">{% trans 'Registro' %}</h1>
+
+            <div class="row">
+                <div class="col s12 l6 xl4 offset-l3 offset-xl4">
+                    <form class="" method="post" action=".">
+                      {% csrf_token %}
+                      {{ form|crispy }}
+
+                      <input class="btn btn-primary" type="submit" value="{% trans 'Enviar' %}" />
+                      <a class="btn btn-warning" href="{% url 'site_home' %}">{% trans 'Atrás' %}</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

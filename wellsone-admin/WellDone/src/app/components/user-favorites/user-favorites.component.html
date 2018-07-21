@@ -1,0 +1,3 @@
+<post-list *ngIf="!empty; else alert" [posts]="posts"></post-list>
+<ng-template #alert><p style="color: black">{{alertMessage}}</p></ng-template>
+

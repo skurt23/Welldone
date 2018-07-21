@@ -1,0 +1,17 @@
+<div class="container">
+    <div *ngIf="user.email">
+        <hr>
+        <h3>INFORMACIÓN DE USUARIO</h3>
+        <hr>
+        <p>Nombre de usuario: <b>{{user.username}}</b></p>
+        <p>Email: <b>{{user.email}}</b></p>
+        <p>Nombre completo <b>{{user.first_name}}, {{user.last_name}}</b></p>
+        <p>Mi web: <b>{{user.title}}</b></p>
+        <p>Avatar: <b>{{user.avatar}}</b></p>
+        <p>Quien soy: <b>{{user.history}}</b></p>
+        <p>Artículos publicados: <b>{{user.num_of_articles}}</b></p>
+        <p>Número de likes: <b>{{user.num_of_likes}}</b></p>
+        <p>Usuario desde: <b>{{user.created_at}}</b></p>
+        <hr>
+    </div>
+</div>

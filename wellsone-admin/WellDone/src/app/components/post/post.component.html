@@ -1,0 +1,32 @@
+<article class="col s12 m6 l4 single-card-box single-post">
+  <div class="card">
+    <div class="card-image">
+      <div class="card-img-wrap">
+        <div *ngIf="isImage" class="blog-post-thumb waves-effect waves-block waves-light">
+          <a [routerLink]="'/detail/' + post.id"><img class="activator" [src]="source" height="180px" alt="Post Media">
+          </a>
+        </div>
+        <div *ngIf="isYoutube" class="blog-post-thumb videoPost">
+          <iframe [src]="source" allowfullscreen></iframe>
+        </div>
+        <div *ngIf="isVimeo" class="blog-post-thumb videoPost">
+          <iframe [src]="source" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+        <div class="post-body">
+          <a [routerLink]="'/detail/' + post.id" class="post-title-link brand-text"><h2 class="post-title">{{post.title}}</h2></a>
+          <p class="post-content">{{post.introduction}} </p>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix card-content">
+      <a href="#" class="chip">
+        <img [src]="post.avatar" alt="Contact Person">
+        <strong>{{post.owner}}</strong> {{post.created_at | fromNow}}
+      </a>
+    </div>
+    <div class="clearfix card-content">
+      <a class="left like-button active js-favorite" title="Love this"><i class="material-icons">favorite</i><span class="numb">{{post.likes}}</span></a>
+      <a [routerLink]="'/detail/' + post.id" class="brand-text right waves-effect">leer más</a>
+    </div>
+  </div>
+</article>

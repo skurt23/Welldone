@@ -1,0 +1,19 @@
+{% load i18n %}
+
+{% if user.is_authenticated %}
+    <div class="post-underliner" id="underliner" style="display: none;">
+        <a class="js-underline action_add_underline" data-article="{{ article.pk }}" data-underline-url="{% url 'underline_article' %}" title="Guardar subrayado">
+            <i class="material-icons">add</i>
+        </a>
+        <div class="preloader-wrapper small active underliner-loader"><div class="spinner-layer spinner-brand-color-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>
+    </div>
+
+    <div class="post-ununderliner" id="ununderliner" style="display: none;">
+        <a class="js-underline action_remove_underline" data-article="{{ article.pk }}" data-underlined-text="-1" data-ununderline-url="{% url 'ununderline_article' %}" title="Eliminar subrayado">
+            <i class="material-icons">delete</i>
+        </a>
+        <div class="preloader-wrapper small active underliner-loader"><div class="spinner-layer spinner-brand-color-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>
+    </div>
+
+    <div id="underliner-error" class="underliner-error error-bg">{% trans "Se ha producido un error. Vuelve a intentarlo" %}</div>
+{%  endif %}

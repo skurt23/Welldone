@@ -1,0 +1,5 @@
+<div *ngIf="message" [ngClass]="{ 'alert': message, 'alert-warning': message.type === 'success' }">
+   <p class="header-message">Usuario: {{message.text}}</p>
+   <a class="btn btn-warning logout" [routerLink]="['/login']">Logout</a>
+   <a class="btn btn-info logout" [routerLink]="['/update']">Datos de Usuario</a>
+</div>

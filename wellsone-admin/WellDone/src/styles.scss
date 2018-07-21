@@ -1,0 +1,548 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "./assets/style";
+
+
+html {
+  touch-action: manipulation;
+}
+
+body,html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  min-height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+
+.modal-backdrop{
+  z-index: 0;
+}
+
+.text-red {
+  color: #cd151e;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/************* START TOP MENU **************/
+
+#top-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #1d1d2b;
+  z-index: 9;
+  height: 9%;
+}
+
+#top-menu > div:not(.logo) {
+  float: left;
+}
+
+#top-menu .logo {
+  float: right;
+}
+
+#top-menu .logo > div {
+  float: left;
+}
+
+#top-menu .title {
+  border-right: 1px solid #191924;
+  min-width: 270px;
+  cursor: pointer;
+}
+
+#top-menu .title h2 {
+  font-size: 22px;
+  padding: 22px 10px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+
+#top-menu .top-menu-container {
+  margin-left: 13px;
+}
+
+#top-menu .top-menu-container ul {
+  overflow: hidden;
+  margin: 0;
+}
+
+#top-menu .top-menu-container li {
+  float: left;
+}
+
+#top-menu .top-menu-container li a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 24px 15px;
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;
+}
+
+#top-menu .top-menu-container li a:hover {
+  color: #cd151e;
+}
+
+#top-menu .logo {
+  margin: 10px 10px;
+}
+
+#top-menu .logo i {
+  font-size: 22px;
+  color: white;
+  margin: 10px;
+  cursor: pointer;
+}
+
+#mobile-main-menu {
+  display: none;
+  cursor: pointer;
+}
+
+#mobile-main-menu {
+  padding: 24px 15px;
+}
+
+#mobile-main-menu img {
+  height: 16px;
+}
+
+#top-menu #top-menu-link {
+  -webkit-transition: max-height .5s ease;
+  -moz-transition: max-height .5s ease;
+  -ms-transition: max-height .5s ease;
+  -o-transition: max-height .5s ease;
+  transition: max-height .5s ease;
+  overflow: hidden;
+}
+
+#top-menu #top-menu-link.active {
+  max-height: 500px;
+}
+
+/************* END TOP MENU **************/
+
+/************* START MAIN MENU **************/
+
+#main-menu {
+  width: 270px;
+  height: calc(100% - 66px);
+  float: left;
+  background-color: #20202f;
+  margin-top: 65px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  -webkit-transition: left .5s ease;
+  -moz-transition: left .5s ease;
+  -ms-transition: left .5s ease;
+  -o-transition: left .5s ease;
+  transition: left .5s ease;
+}
+
+#main-menu.active {
+  left: 0;
+}
+
+#main-menu > div {
+  border-top: 1px solid #191924;
+}
+
+#main-menu .menu-search {
+  position: relative;
+  padding: 10px;
+}
+
+#main-menu .menu-search input {
+  border: 1px solid #babfc4;
+  font-size: 14px;
+  color: #a4a4b0;
+  padding: 8px 10px 8px 30px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+#main-menu .menu-search:before {
+  content: "";
+  background: url("./assets/images/search-doc.png") no-repeat 50% 50%;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 19px;
+  left: 17px;
+}
+
+#main-menu .menu-search input:focus,
+#main-menu .menu-search input:active {
+  outline: 0;
+}
+
+#main-menu .main-menu-container {
+  overflow-y: auto;
+  height: calc(100% - 56px);
+}
+
+#main-menu .section .item h4 {
+  position: relative;
+}
+
+#main-menu .section .item h4 .arrow {
+  display: block;
+  width: 11px;
+  height: 12px;
+  background: url("./assets/images/repa-down.png") no-repeat bottom left;
+  background-size: contain !important;
+  position: absolute;
+  top: calc(50% - 6px);
+  right: 0;
+}
+
+#main-menu .section .item.active h4 .arrow {
+  background: url("./assets/images/repa-up.png") no-repeat top left;
+}
+
+#main-menu .menu-content {
+  padding: 0 15px 0 10px;
+}
+
+#main-menu .section h3 {
+  font-size: 16px;
+  font-weight: 300;
+  color: #a4a4b0;
+  text-transform: uppercase;
+  margin: 15px 0;
+  cursor: pointer;
+
+  -webkit-transition: all .2s ease-out;
+  -moz-transition: all .2s ease-out;
+  -o-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+
+#main-menu .section h3:hover,
+#main-menu .section.active h3 {
+  color: #fff;
+}
+
+#main-menu .section .item {
+  margin-bottom: 13px;
+  margin-left: 15px;
+  display: none;
+}
+
+#main-menu .section:first-child .item {
+  display: none !important;
+}
+
+#main-menu .section.active .item {
+  display: block;
+}
+
+#main-menu .section h4 {
+  color: #a4a4b0;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 300;
+  -webkit-transition: all .2s ease-out;
+  -moz-transition: all .2s ease-out;
+  -o-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+
+#main-menu .section h4:hover {
+  color: #fff;
+}
+
+#main-menu .section .item h4 .arrow {
+  width: 8px;
+  height: 9px;
+  top: calc(50% - 5px);
+}
+
+#main-menu .section ul {
+  display: none;
+}
+
+#main-menu .section .item.active ul {
+  display: block;
+  margin: 5px 0 -5px;
+  padding: 0 0 0 5px;
+  background: url("./assets/images/border-dot.png") repeat-y 5px 0;
+}
+
+#main-menu .section .item li {
+  color: #a4a4b0;
+  font-size: 14px;
+  padding: 0 0 0 12px;
+  margin: 14px 0;
+  /*font-family: 'Source Code Pro';*/
+  border-left: 1px solid transparent;
+  list-style: none;
+}
+
+#main-menu .section .item li.active,
+#main-menu .section .item li:hover {
+  color: #cd151e;
+  border-left: 1px solid #cd151e;
+}
+
+#main-menu .section .item li:not(.active):hover {
+  cursor: pointer;
+}
+
+/************* END MAIN MENU **************/
+
+/************* START MAIN **************/
+#main {
+  width: calc(100% - 270px);
+  height: 100%;
+  float: right;
+  margin-top: 70px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+#main .content-header {
+/*border-left: 3px solid #babfc4;*/
+/*padding-left: 15px;*/
+}
+
+#main .content-header h1 {
+  /*font-size: 48px;*/
+  /*font-weight: 500;*/
+  color: #1d1d2b;
+  /*text-transform: uppercase;*/
+  margin-top: 35px;
+  margin-bottom: 20px;
+/*line-height: 23px;*/
+}
+
+#main .content-header h1 a {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 4px;
+  line-height: 0;
+}
+
+#main .content-header h1 img {
+  width: 15px;
+  vertical-align: top;
+}
+
+#main .content-header p {
+  /*font-size: 18px;*/
+  color: #1d1d2b;
+  font-weight: 300;
+/*line-height: 30px;*/
+}
+
+#main .content-box {
+  margin-top: 20px;
+  /*padding: 15px;*/
+  box-sizing: border-box;
+  background-color: #fff;
+  margin-bottom: 30px;
+}
+
+/************* END MAIN **************/
+
+@media (max-width: 1020px) {
+  #top-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    border-bottom: 1px solid #191924;
+  }
+
+  #top-menu #mobile-main-menu {
+    order: 0;
+  }
+
+  #top-menu .title {
+    order: 1;
+    width: calc(100% - 95px);
+    text-align: center;
+    min-width: 1px;
+  }
+
+  #top-menu .logo {
+    order: 2;
+  }
+
+  #top-menu .top-menu-container {
+    position: fixed;
+    background-color: #1d1d2b;
+    left: 0;
+    right: 0;
+    top: 67px;
+    margin: 0;
+    max-height: 0;
+  }
+
+  #top-menu .top-menu-container ul {
+    padding: 10px 0;
+  }
+
+  #top-menu .top-menu-container li {
+    float: none;
+  }
+
+  #top-menu .top-menu-container li a {
+    display: block;
+    padding: 10px 10px;
+  }
+
+  #mobile-main-menu {
+    display: inline-block;
+  }
+
+  #main-menu {
+    left: -100%;
+    height: calc(100% - 69px);
+  }
+
+  .isOpenMenu #main-menu {
+    left: 0;
+  }
+
+  #main {
+    width: 100%;
+    float: none;
+  }
+}
+
+@media (max-width: 600px) {
+  #top-menu .title h2 {
+    padding: 15px;
+  }
+
+  #mobile-main-menu {
+    padding: 17px 15px;
+  }
+
+  #top-menu .top-menu-container {
+    top: 105px;
+  }
+
+  #main-menu {
+    height: calc(100% - 55px);
+  }
+}
+
+pre {
+  word-wrap: normal;
+  word-break: normal;
+}
+
+.nav-item.customClass {
+  float: right;
+}
+.nav-item.customClass a {
+  background-color: #50ff50;
+}
+
+.card.customClass,
+.card.customClass .card-header,
+.panel.customClass {
+  background-color: #5bc0de;
+  color: #fff;
+}
+.panel.customClass .panel-body {
+  background-color: #337aa7;
+}
+
+.app-footer {
+  padding: 3rem 2rem;
+  margin-top: 3rem;
+  background-color: #f7f7f7;
+  text-align: left;
+  color: #818a91 !important;
+}
+
+.app-footer a {
+  font-weight: 500;
+  color: #55595c;
+}
+
+.app-footer a:hover {
+  text-decoration: underline;
+}
+
+/* mix */
+#main .container {
+  margin-left: 0px;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px
+}
+
+.container::after {
+  content: "";
+  display: table;
+  clear: both
+}
+
+@media (min-width: 576px) {
+  .container {
+    width:540px;
+    max-width: 100%
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width:720px;
+    max-width: 100%
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width:960px;
+    max-width: 100%
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width:1140px;
+    max-width: 100%;
+  }
+}
+
+/************* START SHARE BUTTONS **************/
+
+.custom-buttons {
+  .sb-buttons {
+    button {
+      background-color: transparent;
+    }
+  }
+}
+
+/************* END SHARE BUTTONS **************/
+
+

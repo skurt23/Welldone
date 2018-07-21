@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Artículos de {{ categoria.category_name }}. Página {{ articles_list.number }}{% endblock%}
+{% block description %}Todos los artículos de la categoría: {{ categoria.category_name }}. Página {{ articles_list.number }}{% endblock%}
+{% block meta %}{% spaceless %}
+    {% include 'includes/rel_next_prev.html' with object_list=articles_list %}
+{% endspaceless %}{% endblock%}
+
+{% block breadcrumbs %}
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <a href="{% url 'articles_by_category' categoria.slug %}" class="breadcrumb" itemprop="item">
+            <span itemprop="name">{{ categoria.category_name }}</span>
+            <meta itemprop="position" content="2" />
+        </a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <section id="content" class="bottom-50 root-sec grey lighten-5 blogpage-posts-wrap">
+        <div class="container">
+            <h1 class="title">Artículos de {{ categoria.category_name }}</h1>
+
+            {% include 'articles/includes/articles_loop.html' %}
+        </div>
+
+        {% include 'includes/pagination.html' with object_list=articles_list %}
+    </section>
+
+{% endblock %}

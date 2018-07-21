@@ -1,0 +1,22 @@
+<header id="navigation" class="root-sec white nav">
+    {% include 'includes/menu.html' %}
+</header>
+
+<section id="categories-menu" class="categories-menu secondary-bg" style="height: 64px;">
+    <div class="container">
+        <div class="row">
+            <nav id="navi" class="navi secondary-bg">
+                <div id="nav__outer-wrap" class="nav__outer-wrap">
+                    <ul id="nav__inner-wrap" class="nav__inner-wrap">
+                        {% for category in category_items %}
+                            <li class="nav__item"><a href="{% url 'articles_by_category' category.slug %}">{{ category.category_name }}</a></li>
+                        {% endfor %}
+                        <li id="nav__item--right-spacer" class="nav__item nav__item--right-spacer"></li>
+                    </ul>
+                </div>
+                <button id="nav__scroll--left" class="nav__scroll nav__scroll--left hide secondary-bg">‹</button>
+                <button id="nav__scroll--right" class="nav__scroll nav__scroll--right hide secondary-bg">›</button>
+            </nav>
+        </div>
+    </div>
+</section>

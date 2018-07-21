@@ -1,0 +1,82 @@
+/*
+	Form Styles
+*/
+
+.contact-form .input-field {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.contact-form .card-panel {
+    margin: 0;
+}
+.contact-form .input-label {
+    color: #bbbbbb;
+    left: 0;
+    font-size: 15px;
+}
+
+.contact-form  .input-label.active {
+    color: #727272!important
+}
+
+.contact-form .materialize-textarea,
+.contact-form .input-box {
+    margin-bottom: 0;
+    border-bottom: 1px solid #ececec;
+    box-shadow: 0px 1px 0px #fff;
+    color: #444444;
+    font-size: 15px;
+    height: 50px;
+}
+
+.contact-form .materialize-textarea {
+    padding: 16px 0;
+    margin: 0;
+    height: 132px !important;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.input-field.textarea-input label {
+    bottom: auto;
+    top: 15px;
+}
+
+.textarea-input label.active {
+    bottom: auto;
+    top: 15px;
+}
+
+.contact-form .submit-btn {
+    margin-bottom: 0;
+    padding: 0 15px;
+    font-size: 13px;
+    font-weight: 500;
+    padding-left: 0;
+}
+
+.contact-form .submit-wrap {
+    margin-bottom: 0px;
+}
+
+.contact-form .submit-btn:hover,
+.contact-form .submit-btn:focus {
+    padding-left: 15px;
+    color: #fff!important
+}
+
+
+.form-loader-area {
+    margin-top: 9px;
+    display: none;
+}
+
+#message-success {
+  display: none;
+  position: absolute;
+  right: 0;
+}
+
+#message-success p{
+  font-size: 14px;
+  color: #4CAF50;
+}

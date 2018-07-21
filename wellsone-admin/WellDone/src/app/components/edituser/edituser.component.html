@@ -1,0 +1,39 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Editar USUARIO</h2>
+    <form name="form" (ngSubmit)="f.form.valid && editUser()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+            <label for="email">Email</label>
+            <input id="email" type="text" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" placeholder="email" />
+            <div *ngIf="f.submitted && !email.valid" class="help-block">El email es obligatorio</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !first_name.valid }">
+            <label for="first_name">Nombre</label>
+            <input id="first_name" type="text" class="form-control" name="first_name" [(ngModel)]="user.first_name" #first_name="ngModel" placeholder="Ej: Juan" />
+            <div *ngIf="f.submitted && !first_name.valid" class="help-block">El nombre es obligatorio</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !last_name.valid }">
+            <label for="last_name">Apellido</label>
+            <input id="last_name" type="text" class="form-control" name="last_name" [(ngModel)]="user.last_name" #last_name="ngModel" placeholder="Ej: Ruiz" />
+            <div *ngIf="f.submitted && !last_name.valid" class="help-block">El apellido es obligatorio</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !title.valid }">
+            <label for="title">Título de mi página</label>
+            <input id="title" type="text" class="form-control" name="title" [(ngModel)]="user.title" #title="ngModel" placeholder="Ej: Mis aficiones" />
+            <div *ngIf="f.submitted && !title.valid" class="help-block">El título es obligatorio</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !avatar.valid }">
+            <label for="avatar">Imagen avatar</label>
+            <input id="avatar" type="text" class="form-control" name="avatar" [(ngModel)]="user.avatar" #avatar="ngModel" placeholder="Ej: http://www..." />
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !history.valid }">
+            <label for="history">Algo sobre mi</label>
+            <input id="history" type="text" class="form-control" name="history" [(ngModel)]="user.history" #history="ngModel" placeholder="Ej: 45 años, escultor..." />
+            <div *ngIf="f.submitted && !history.valid" class="help-block">Este campo es obligatorio</div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Actualizar usuario</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a [routerLink]="['/']" class="btn btn-link">Cancelar</a>
+        </div>
+    </form>
+</div>

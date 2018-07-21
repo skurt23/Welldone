@@ -1,0 +1,50 @@
+{% load static %}
+{% load i18n %}
+{% load article_tags %}
+
+        <div class="row">
+            <div id="blog-posts" class="clearfix all-blog-post blog-inner without-sidebar">
+
+                {% for article in articles_list %}
+                    <article class="col s12 m6 l4 single-card-box single-post">
+                        <div class="card">
+                            <div class="card-image">
+                                <div class="card-img-wrap">
+                                    {% if article.media_url|is_imagen %}
+                                        <div class="blog-post-thumb waves-effect waves-block waves-light">
+                                            <a href="{% url 'article_detail' article.owner article.slug %}" title="{{ article.title }}"><img class="activator" src="{{ article.media_url }}" alt="{{ article.title }}">
+                                            </a>
+                                        </div>
+                                    {% elif article.media_url|is_youtube %}
+                                        <div class="blog-post-thumb videoPost">
+                                            <iframe src="{{ article.media_url }}" allowfullscreen></iframe>
+                                        </div>
+                                    {% elif article.media_url|is_vimeo %}
+                                        <div class="blog-post-thumb videoPost">
+                                            <iframe src="{{ article.media_url }}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                        </div>
+                                    {% endif %}
+
+                                    <div class="post-body">
+                                        <a href="{% url 'article_detail' article.owner article.slug %}" title="{{ article.title }}" class="post-title-link brand-text"><h2 class="post-title">{{ article.title }}</h2></a>
+                                        <p class="post-content">{{ article.introduction }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix card-content">
+                                {% include 'articles/includes/owner_info.html' with owner=article.owner item_date=article.publicated_at %}
+                            </div>
+                            <div class="clearfix card-content">
+                                {% include 'articles/includes/fav.html' with article=article isDetail=False %}
+                                <a href="{% url 'article_detail' article.owner article.slug %}#comments" class="left" title="Love this"><i class="material-icons">comment</i><span class="numb">{{ article.comments.all|length }}</span></a>
+                                <a href="{% url 'article_detail' article.owner article.slug %}" class="brand-text right waves-effect">{% trans "leer más" %}</a>
+                            </div>
+                        </div>
+                    </article> <!--./single blog post-->
+
+                {% empty %}
+                    {% trans "No articles yet." as the_message %}
+                    {% include 'includes/info-message.html' with message=the_message %}
+                {% endfor %}
+            </div>
+        </div>

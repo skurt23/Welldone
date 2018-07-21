@@ -1,0 +1,17 @@
+appdirs==1.4.3
+crispy-forms-materialize==0.1
+Django==1.10.6
+django-cors-headers==2.0.2
+django-crispy-forms==1.6.1
+django-registration-redux==1.5
+django-social-share==1.1.1
+djangorestframework==3.6.2
+djangorestframework-jwt==1.10.0
+packaging==16.8
+psycopg2==2.7.1
+pycosat==0.6.1
+pycrypto==2.6.1
+PyJWT==1.4.2
+pyparsing==2.2.0
+requests==2.11.1
+six==1.10.0

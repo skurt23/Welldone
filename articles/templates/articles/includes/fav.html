@@ -1,0 +1,10 @@
+{% load i18n %}
+{% load favourite_tags %}
+
+<a class="left {% if isDetail %}post-like{% else %}like-button{% endif %} {% if user|faved:article %}active{% endif %} {% if user.is_authenticated %}js-favorite{% else %}no-click{% endif %}"
+    data-article="{{ article.pk }}" data-fav-url="{% url 'fav_article' %}" data-unfav-url="{% url 'unfav_article' %}">
+    {% spaceless %}
+    <i class="material-icons">favorite</i>
+    <span class="numb">{{ article.favourite_set.all|length }}</span>
+    {% endspaceless %}
+</a>

@@ -1,0 +1,61 @@
+<section id="all-posts" class="root-sec grey lighten-5 blogpage-posts-wrap">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="clearfix blog-banner-text blog-single-banner">
+        <div class="col s1 m1 l1">
+          <i (click)="back()" class="material-icons">arrow_back</i>
+        </div>
+        <div class="col s11 m11 l11">
+          <a href="" class="chip">
+            <img [src]="article.avatar" alt="Contact Person">
+            <strong [innerHTML]="article.owner"></strong>, <time class="then" [innerHTML]="article.publicated_at | fromNow"></time>
+          </a>
+          <a *ngIf="!publicated" [routerLink]="'/edit/' + article.id" class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Editar</a>
+          <h1 class="title" [innerHTML]="article.title"></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="clearfix all-blog-post blog-inner with-sidebar">
+        <div class="col s11 offset-s1 m10 offset-m1 l8 offset-l1">
+          <article class="single-post-page">
+            <div class="thumb-wrap">
+              <img *ngIf="isImage" [src]="source" [alt]="article.title">
+              <div *ngIf="isYoutube" class="blog-post-thumb videoPost">
+                <iframe [src]="source" allowfullscreen></iframe>
+              </div>
+              <div *ngIf="isVimeo" class="blog-post-thumb videoPost">
+                <iframe [src]="source" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+              </div>
+            </div>
+
+            <div class="single-post-content">
+              <p [innerHTML]="article.body"></p>
+            </div>
+            <div class="clearfix post-footer">
+              <a class="left post-like js-favorite" title="Love this"><i class="material-icons">favorite</i> <span class="numb" [innerHTML]="article.likes"></span></a>
+              <ul class="right share-post">
+                <share-buttons class="custom-buttons"
+                               [url]="'https://twitter.com'"
+                               [defaultStyle]="false"
+                               [facebook]="fbTemp"
+                               [twitter]="twttTemp"
+                               [pinterest]="false"
+                               [linkedIn]="false"
+                               [google]="false"
+                               [tumblr]="false"
+                               [whatsApp]="false"
+                               [reddit]="false"
+                               [stumbleUpOn]="false"
+                ></share-buttons>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

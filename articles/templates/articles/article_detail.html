@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load article_tags %}
+{% load crispy_forms_tags %}
+{% load social_share %}
+
+{% block title %}{{ article.title }}{% endblock%}
+{% block description %}{{ article.introduction|truncatechars:150 }}{% endblock%}
+
+{% block meta %}
+    <!-- Open Graph data -->
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article:http://ogp.me/ns/article#">
+    <meta property="og:title" content="{{ article.title }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{% url 'article_detail' article.owner article.slug %}" />
+    <meta property="og:image" content="{{ article.media_url }}" />
+    <meta property="og:description" content="{{ article.introduction|truncatechars:200 }}" />
+    <meta property="og:site_name" content="WellDone" />
+    {% comment %}<meta property="fb:app_id" content="Your FB_APP_ID" />{%  endcomment %}
+
+    <!-- Twitter Card data -->
+    {% if article.media_url|is_imagen %}
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image:src" content="{{ article.media_url }}">
+    {%  else %}
+        <meta name="twitter:card" content="player">
+        <meta name="twitter:player" content="{{ article.media_url }}">
+    {% endif %}
+    <meta name="twitter:site" content="@welldone">
+    <meta name="twitter:title" content="{{ article.title }}">
+    <meta name="twitter:description" content="{{ article.introduction|truncatechars:200 }}">
+    <meta name="twitter:creator" content="@welldone">
+
+{% endblock %}
+
+
+{% block breadcrumbs %}
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <a href="{% url 'articles_by_user' article.owner %}" class="breadcrumb" itemprop="item">
+            <span itemprop="name">{{ article.owner.username }}</span>
+            <meta itemprop="position" content="2" />
+        </a>
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <a href="{% url 'article_detail' article.owner article.slug %}" class="breadcrumb" itemprop="item">
+            <span itemprop="name">{{ article.title }}</span>
+            <meta itemprop="position" content="3" />
+        </a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <!-- Blog Post Container-->
+    <section id="all-posts" class="root-sec grey lighten-5 blogpage-posts-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="clearfix blog-banner-text blog-single-banner">
+                    <div class="col s12">
+                        {% if article.is_response_to %}
+                            {% trans "Este artículo es una respuesta a: " as the_message %}
+                            {% url 'article_detail' article.is_response_to.owner article.is_response_to.slug as the_replied_article_url %}
+
+                            {% with the_message|add:"<a href='"|add:the_replied_article_url|add:"'> "|add:article.is_response_to.title|add:"</a>" as the_full_message %}
+                                {% include 'includes/info-message.html' with message=the_full_message %}
+                            {% endwith %}
+                        {% endif %}
+
+                        {% include 'articles/includes/owner_info.html' with owner=article.owner item_date=article.publicated_at %}
+
+                        <h1 class="title">{{ article.title }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="clearfix all-blog-post blog-inner with-sidebar">
+
+                    <!-- post container start-->
+                    <div class="col s12 l8">
+                        <article class="single-post-page">
+                            <div class="thumb-wrap">
+                                {% if article.media_url|is_imagen %}
+                                    <img src="{{ article.media_url }}" alt="{{ article.title }}">
+                                {% elif article.media_url|is_youtube %}
+                                    <div class="blog-post-thumb videoPost">
+                                        <iframe src="{{ article.media_url }}" allowfullscreen></iframe>
+                                    </div>
+                                {% elif article.media_url|is_vimeo %}
+                                    <div class="blog-post-thumb videoPost">
+                                        <iframe src="{{ article.media_url }}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="single-post-content" id="post-content">
+                                {% include 'articles/includes/underliner.html' with article=article %}
+                                <p>{{ article.body|safe }}</p>
+                            </div>
+                            <div class="clearfix post-footer">
+                                {% include 'articles/includes/fav.html' with article=article isDetail=True %}
+                                {% url 'article_detail' article.owner article.slug as the_url %}
+                                <ul class="right share-post">
+                                    {% if user.is_authenticated %}
+                                        <li><a target="_blank" href="http://app.areswolf.com/create"><i class="fa fa-reply"></i> <span>{% trans "RESPONDER" %}</span></a></li>
+                                    {% endif %}
+                                    <li>{% post_to_facebook "Post to Facebook!" the_url %}</li>
+                                    <li>{% post_to_twitter "Me ha gustado el artículo de WellDone" the_url %}</li>
+                                </ul>
+                            </div>
+
+                            <div class="comment-reply-section" id="comments">
+                                {%  if article.comments.all %}
+                                    <h2 class="com-title">{{ article.comments.all|length  }} {% trans "comments" %}</h2>
+                                {%  endif %}
+                                <ul class="comment-list">
+                                    {% for comment in article.comments.all reversed %}
+                                        <li>
+                                            <div class="clearfix card">
+                                                <div class="card-content comment-content">
+                                                    <div class="comment-text" style="margin-bottom:12px;">
+                                                        <p><strong>{{ comment.title }}</strong></p>
+                                                        <p>{{ comment.body }}</p>
+                                                    </div>
+                                                    <div class="comment-meta">
+                                                        {% include 'articles/includes/owner_info.html' with owner=comment.owner item_date=comment.created_at %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {% empty %}
+                                        {% trans "No comments yet." as the_message %}
+                                        {% include 'includes/info-message.html' with message=the_message %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            {% if user.is_authenticated %}
+                                <div class="contact-form  comment-reply-form">
+                                    <h2 class="com-title">{% trans "Deja un comentario" %}</h2>
+                                    <form method="post" action="">
+                                        {% csrf_token %}
+                                        {{ form|crispy }}
+                                        <div class="input-field submit-wrap">
+                                            <button type="submit" class="waves-effect waves-light btn-large brand-bg white-text comm-submit regular-text">{% trans "Enviar" %}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            {%  else %}
+                                {% trans "You must be a registered user in order to add comments." as the_message %}
+                                {% include 'includes/info-message.html' with message=the_message %}
+                            {% endif %}
+                        </article>
+                    </div> <!-- ./post container end-->
+                </div>
+            </div>
+        </div> <!-- ./container end-->
+    </section>  <!-- ./Blog Post Container end-->
+{% endblock %}

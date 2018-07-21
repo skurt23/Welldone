@@ -1,0 +1,112 @@
+/* colores */
+
+// https://coolors.co/16a085-95a5a6-546a76-88a0a8-b4ceb3
+
+/* HSL
+$color1: hsla(168%, 76%, 36%, 1);
+$color2: hsla(184%, 9%, 62%, 1);
+$color3: hsla(201%, 17%, 40%, 1);
+$color4: hsla(195%, 16%, 60%, 1);
+$color5: hsla(118%, 22%, 75%, 1);*/
+
+/* RGB
+$color1: rgba(22, 160, 133, 1); #16a085 Turquesa
+$color2: rgba(149, 165, 166, 1) #95a5a6 Gris Claro
+$color3: rgba(84, 106, 118, 1); #546a76 Gris oscuro
+$color4: rgba(136, 160, 168, 1); #88a0a8 Gris
+$color5: rgba(180, 206, 179, 1); #b4ceb3 Verde claro
+*/
+
+.brand-text {
+    color: $primary-color!important;
+}
+
+.brand-text i {
+    color: $primary-color!important;
+}
+
+.brand {
+    background-color: $primary-color
+}
+
+.brand.lighten {
+    background-color: $primary-color-light
+}
+
+.secondary-text {
+    color: $secondary-color !important;
+}
+
+.secondary-bg {
+    background-color: $secondary-color !important;
+}
+
+.secondary-dark-text {
+    color: $secondary-color-dark !important;
+}
+
+.secondary-dark-bg {
+    background-color: $secondary-color-dark !important;
+}
+
+.info-bg {
+    background-color: lighten($secondary-color, 20%);
+}
+
+.error-bg {
+    background-color: lighten($error-color, 20%);
+}
+
+.static-menu li i:hover,
+.static-menu li a:hover,
+.single-post-content a,
+.share-post li a:hover,
+.com-title a,
+.blog-inner .card-content a.left:hover,
+.blog-inner .card-content a.left.active {
+    color: $primary-color;
+}
+
+.blog-inner .card-content a.right:hover,
+.blog-inner .card-content a.right:focus,
+.contact-form .submit-btn:hover,
+.contact-form .submit-btn:focus,
+.blog-inner .card-content a.right:active,
+.pagination li.active {
+    background-color: $primary-color;
+}
+
+.contact-form .materialize-textarea:focus,
+.contact-form .input-box:focus {
+    border-color: $primary-color;
+    box-shadow: 0px 1px 0px $primary-color;
+}
+
+
+.single-post-content blockquote {
+    border-left: 5px solid $primary-color;
+}
+
+
+
+@-webkit-keyframes color {
+    0%   {stroke: $primary-color;}
+    20%  {stroke: $primary-color;}
+    25%  {stroke: $primary-color;}
+    45%  {stroke: $primary-color;}
+    50%  {stroke: $primary-color;}
+    70%  {stroke: $primary-color;}
+    75%  {stroke: $primary-color;}
+    95%  {stroke: $primary-color;}
+}
+
+@keyframes color {
+    0%   {stroke: $primary-color;}
+    20%  {stroke: $primary-color;}
+    25%  {stroke: $primary-color;}
+    45%  {stroke: $primary-color;}
+    50%  {stroke: $primary-color;}
+    70%  {stroke: $primary-color;}
+    75%  {stroke: $primary-color;}
+    95%  {stroke: $primary-color;}
+}
